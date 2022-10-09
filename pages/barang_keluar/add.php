@@ -13,6 +13,16 @@ if (isset($_POST['submit'])) {
     $catatan = $_POST['catatan'];
     $session_id = $_SESSION['id'];
 
+    if ($barang_id == 'default' || $montir_id == 'default') {
+        echo "
+        <script>
+        alert('harap isi semua form');
+        window.location.href ='index.php?barang-keluar=add  ';
+        </script>
+        ";
+    }
+
+
     try {
         // Matikan autocommit 
         mysqli_autocommit($conn, FALSE);
@@ -75,12 +85,12 @@ if (isset($_POST['submit'])) {
                     <form action="" method="POST">
                         <div class="mb-3">
                             <label for="nama" class="form-label py-0 m-0">Tanggal</label>
-                            <input type="date" name="tanggal" class="form-control rounded-pill border-none">
+                            <input required type="date" name="tanggal" class="form-control rounded-pill border-none">
                         </div>
 
                         <div class="mb-3">
                             <label for="nama" class="form-label py-0 m-0">Barang</label>
-                            <select name="barang_id" class="js-example-basic-barang form-control rounded-pill border-none py-2" style=" box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
+                            <select required name="barang_id" class="js-example-basic-barang form-control rounded-pill border-none py-2" style=" box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                                 <option selected value="default"> -- pilih barang -- </option>
                                 <?php while ($fetch_barang = mysqli_fetch_assoc($queryAllBarang)) : ?>
                                     <option value="<?= $fetch_barang['id']; ?>"><?= $fetch_barang['nama']; ?></option>
@@ -92,7 +102,7 @@ if (isset($_POST['submit'])) {
 
                         <div class="mb-3">
                             <label for="nama" class="form-label py-0 m-0">Montir</label>
-                            <select name="montir_id" class="js-example-basic-supplier form-control rounded-pill border-none py-2" style=" box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
+                            <select required name="montir_id" class="js-example-basic-supplier form-control rounded-pill border-none py-2" style=" box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                                 <option selected value="default"> -- pilih Montir -- </option>
                                 <?php while ($fetch_montir = mysqli_fetch_assoc($queryAllMontir)) : ?>
                                     <option value="<?= $fetch_montir['id']; ?>"><?= $fetch_montir['nama']; ?></option>

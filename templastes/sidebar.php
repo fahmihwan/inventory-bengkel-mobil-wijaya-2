@@ -41,7 +41,7 @@
             <?php endif; ?>
 
             <!-- transaksi -->
-            <?php if ($varSession['hak_akses'] == 'operator' || $varSession['hak_akses'] == 'super admin') : ?>
+            <?php if ($varSession['hak_akses'] == 'admin' || $varSession['hak_akses'] == 'super admin') : ?>
                 <div class="sb-sidenav-menu-heading">Transaksi</div>
                 <a class="nav-link" href="index.php?menu=barang-masuk">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
@@ -53,7 +53,7 @@
                 </a>
             <?php endif; ?>
 
-            <?php if ($varSession['hak_akses'] == 'admin' || $varSession['hak_akses'] == 'super admin') : ?>
+            <?php if ($varSession['hak_akses'] == 'owner' || $varSession['hak_akses'] == 'super admin') : ?>
                 <div class="sb-sidenav-menu-heading">Laporan</div>
                 <a class="nav-link" href="index.php?laporan=barang-masuk">
                     <div class="sb-nav-link-icon">

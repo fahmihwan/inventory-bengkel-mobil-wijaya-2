@@ -13,6 +13,16 @@ if (isset($_POST['submit'])) {
     $catatan = $_POST['catatan'];
     $session_id = $_SESSION['id'];
 
+    if ($barang_id == 'default' || $supplier_id == 'default') {
+        echo "
+        <script>
+        alert('harap isi semua form');
+        window.location.href ='index.php?barang-masuk=add  ';
+        </script>
+        ";
+    }
+
+
     try {
         // Matikan autocommit 
         mysqli_autocommit($conn, FALSE);
@@ -67,13 +77,13 @@ if (isset($_POST['submit'])) {
                     <form action="" method="POST">
                         <div class="mb-3">
                             <label for="nama" class="form-label py-0 m-0">Tanggal</label>
-                            <input type="date" name="tanggal" class="form-control rounded-pill border-none">
+                            <input type="date" required name="tanggal" class="form-control rounded-pill border-none">
                         </div>
 
                         <div class="mb-3">
                             <label for="nama" class="form-label py-0 m-0">Barang</label>
-                            <select name="barang_id" class="js-example-basic-barang form-control rounded-pill border-none py-2" style=" box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
-                                <option selected value="default"> -- pilih barang -- </option>
+                            <select required name="barang_id" class="js-example-basic-barang form-control rounded-pill border-none py-2" style=" box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
+                                <option selected required value="default"> -- pilih barang -- </option>
                                 <?php while ($fetch_barang = mysqli_fetch_assoc($queryAllBarang)) : ?>
                                     <option value="<?= $fetch_barang['id']; ?>"><?= $fetch_barang['nama']; ?></option>
                                 <?php
@@ -84,7 +94,7 @@ if (isset($_POST['submit'])) {
 
                         <div class="mb-3">
                             <label for="nama" class="form-label py-0 m-0">Supplier</label>
-                            <select name="supplier_id" class="js-example-basic-supplier form-control rounded-pill border-none py-2" style=" box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
+                            <select required name="supplier_id" class="js-example-basic-supplier form-control rounded-pill border-none py-2" style=" box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                                 <option selected value="default"> -- pilih supplier -- </option>
                                 <?php while ($fetch_supplier = mysqli_fetch_assoc($queryAllSupplier)) : ?>
                                     <option value="<?= $fetch_supplier['id']; ?>"><?= $fetch_supplier['nama']; ?></option>
@@ -95,12 +105,12 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="mb-3">
                             <label for="qty" class="form-label py-0 m-0">qty</label>
-                            <input type="number" class="form-control rounded-pill border-none" id="qty" name="qty" placeholder="qty" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
+                            <input type="number" required class="form-control rounded-pill border-none" id="qty" name="qty" placeholder="qty" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                         </div>
                         <div class="mb-3">
                             <label for="qty" class="form-label py-0 m-0">catatan</label>
                             <div class="form-floating">
-                                <textarea class="form-control" name="catatan" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                                <textarea required class="form-control" name="catatan" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
                                 <label for="floatingTextarea2">Comments</label>
                             </div>
                         </div>

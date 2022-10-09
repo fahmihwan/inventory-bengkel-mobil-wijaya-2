@@ -8,8 +8,17 @@ if (isset($_POST['submit'])) {
     $rak_id = $_POST['rak_id'];
     $qty = $_POST['qty'];
 
-    $query_insert = mysqli_query($conn, "INSERT INTO barang (nama,kategori_id,rak_id,qty) VALUES ('$nama','$kategori_id','$rak_id','$qty')");
 
+    if ($kategori_id == 'default' || $rak_id == 'default') {
+        echo "
+        <script>
+        alert('harap isi semua form');
+        window.location.href ='index.php?menu=data-barang  ';
+        </script>
+        ";
+    }
+
+    $query_insert = mysqli_query($conn, "INSERT INTO barang (nama,kategori_id,rak_id,qty) VALUES ('$nama','$kategori_id','$rak_id','$qty')");
 
 
     if ($query_insert) {
@@ -63,7 +72,7 @@ $kategori = mysqli_query($conn, "SELECT * FROM kategori");
 
                         <div class="mb-3">
                             <label for="nama" class="form-label py-0 m-0">Kategori</label>
-                            <select name="kategori_od" class="js-example-basic-kategori form-control rounded-pill border-none py-2" style=" box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
+                            <select required name="kategori_id" class="js-example-basic-kategori form-control rounded-pill border-none py-2" style=" box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                                 <option selected value="default"> -- pilih kategori-- </option>
                                 <?php while ($fetch_kategori = mysqli_fetch_assoc($kategori)) : ?>
                                     <option value="<?= $fetch_kategori['id']; ?>"><?= $fetch_kategori['nama']; ?></option>
@@ -74,7 +83,7 @@ $kategori = mysqli_query($conn, "SELECT * FROM kategori");
                         </div>
                         <div class="mb-3">
                             <label for="nama" class="form-label py-0 m-0">Rak</label>
-                            <select name="rak" class="js-example-basic-rak form-control rounded-pill border-none py-2" style=" box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
+                            <select required name="rak_id" class="js-example-basic-rak form-control rounded-pill border-none py-2" style=" box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                                 <option selected value="default"> -- pilih rak -- </option>
                                 <?php while ($fetch_rak = mysqli_fetch_assoc($rak)) : ?>
                                     <option value="<?= $fetch_rak['id']; ?>"><?= $fetch_rak['nama']; ?></option>

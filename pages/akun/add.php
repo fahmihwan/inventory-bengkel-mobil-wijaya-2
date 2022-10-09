@@ -79,6 +79,12 @@ if (isset($_POST['submit'])) {
                                     Super Admin
                                 </label>
                             </div>
+                            <div class="form-check me-3">
+                                <input class="form-check-input" type="radio" name="hak_akses" value="owner" id="flexRadioDefault2">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Owner
+                                </label>
+                            </div>
 
                             <div class="form-check me-3">
                                 <input class="form-check-input" type="radio" name="hak_akses" value="admin" id="flexRadioDefault1">
@@ -86,12 +92,7 @@ if (isset($_POST['submit'])) {
                                     Admin
                                 </label>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="hak_akses" value="operator" id="flexRadioDefault2">
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Operator
-                                </label>
-                            </div>
+
                         </div>
                         <button name="submit" class="btn btn-primary rounded-pill">submit</button>
                         <button class="btn btn-secondary rounded-pill">clear</button>

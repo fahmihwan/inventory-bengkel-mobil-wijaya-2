@@ -43,12 +43,12 @@ if (isset($_GET['menu'])) {
             }
             break;
         case 'barang-keluar':
-            if ($varSession['hak_akses'] != 'operator' && $varSession['hak_akses'] != 'super admin') {
+            if ($varSession['hak_akses'] != 'admin' && $varSession['hak_akses'] != 'super admin') {
                 header('Location:authentication/login.php');
             }
             break;
         case 'barang-masuk':
-            if ($varSession['hak_akses'] != 'operator' && $varSession['hak_akses'] != 'super admin') {
+            if ($varSession['hak_akses'] != 'admin' && $varSession['hak_akses'] != 'super admin') {
                 header('Location:authentication/login.php');
             }
             break;
@@ -172,22 +172,22 @@ if (isset($_GET['menu'])) {
     $barang_masuk = $_GET['barang-masuk'];
     switch ($barang_masuk) {
         case 'add':
-            if ($varSession['hak_akses'] != 'operator' && $varSession['hak_akses'] != 'super admin') {
+            if ($varSession['hak_akses'] != 'admin' && $varSession['hak_akses'] != 'super admin') {
                 header('Location:authentication/login.php');
             }
             break;
         case 'detail':
-            if ($varSession['hak_akses'] != 'operator' && $varSession['hak_akses'] != 'super admin') {
+            if ($varSession['hak_akses'] != 'admin' && $varSession['hak_akses'] != 'super admin') {
                 header('Location:authentication/login.php');
             }
             break;
         case 'update':
-            if ($varSession['hak_akses'] != 'operator' && $varSession['hak_akses'] != 'super admin') {
+            if ($varSession['hak_akses'] != 'admin' && $varSession['hak_akses'] != 'super admin') {
                 header('Location:authentication/login.php');
             }
             break;
         case 'delete':
-            if ($varSession['hak_akses'] != 'operator' && $varSession['hak_akses'] != 'super admin') {
+            if ($varSession['hak_akses'] != 'admin' && $varSession['hak_akses'] != 'super admin') {
                 header('Location:authentication/login.php');
             }
             break;
@@ -196,23 +196,23 @@ if (isset($_GET['menu'])) {
     $barang_masuk = $_GET['barang-keluar'];
     switch ($barang_masuk) {
         case 'add':
-            if ($varSession['hak_akses'] != 'operator' && $varSession['hak_akses'] != 'super admin') {
+            if ($varSession['hak_akses'] != 'admin' && $varSession['hak_akses'] != 'super admin') {
                 header('Location:authentication/login.php');
             }
             break;
         case 'detail':
-            if ($varSession['hak_akses'] != 'operator' && $varSession['hak_akses'] != 'super admin') {
+            if ($varSession['hak_akses'] != 'admin' && $varSession['hak_akses'] != 'super admin') {
                 header('Location:authentication/login.php');
             }
 
             break;
         case 'update':
-            if ($varSession['hak_akses'] != 'operator' && $varSession['hak_akses'] != 'super admin') {
+            if ($varSession['hak_akses'] != 'admin' && $varSession['hak_akses'] != 'super admin') {
                 header('Location:authentication/login.php');
             }
             break;
         case 'delete':
-            if ($varSession['hak_akses'] != 'operator' && $varSession['hak_akses'] != 'super admin') {
+            if ($varSession['hak_akses'] != 'admin' && $varSession['hak_akses'] != 'super admin') {
                 header('Location:authentication/login.php');
             }
 
@@ -237,23 +237,23 @@ if (isset($_GET['menu'])) {
     $barang_masuk = $_GET['laporan'];
     switch ($barang_masuk) {
         case 'barang-masuk':
-            if ($varSession['hak_akses'] != 'admin' && $varSession['hak_akses'] != 'super admin') {
+            if ($varSession['hak_akses'] != 'owner' && $varSession['hak_akses'] != 'super admin') {
                 header('Location:authentication/login.php');
             }
             break;
         case 'barang-keluar':
-            if ($varSession['hak_akses'] != 'admin' && $varSession['hak_akses'] != 'super admin') {
+            if ($varSession['hak_akses'] != 'owner' && $varSession['hak_akses'] != 'super admin') {
                 header('Location:authentication/login.php');
             }
             break;
         case 'detail-barang-masuk':
-            if ($varSession['hak_akses'] != 'admin' && $varSession['hak_akses'] != 'super admin') {
+            if ($varSession['hak_akses'] != 'owner' && $varSession['hak_akses'] != 'super admin') {
                 header('Location:authentication/login.php');
             }
 
             break;
         case 'detail-barang-keluar':
-            if ($varSession['hak_akses'] != 'admin' && $varSession['hak_akses'] != 'super admin') {
+            if ($varSession['hak_akses'] != 'owner' && $varSession['hak_akses'] != 'super admin') {
                 header('Location:authentication/login.php');
             }
             break;

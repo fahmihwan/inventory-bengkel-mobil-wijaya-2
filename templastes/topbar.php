@@ -14,7 +14,7 @@
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <!-- <li><a class="dropdown-item" href="#!">Settings</a></li> -->
-                <?php if ($varSession['hak_akses'] == 'admin' || $varSession['hak_akses'] == 'super admin') : ?>
+                <?php if ($varSession['hak_akses'] == 'owner' || $varSession['hak_akses'] == 'super admin') : ?>
                     <li><a class="dropdown-item" href="index.php?menu=akun">Pengaturan Akun</a></li>
                     <li>
                         <hr class="dropdown-divider" />
