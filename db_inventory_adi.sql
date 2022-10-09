@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Sep 29, 2022 at 07:36 AM
+-- Generation Time: Oct 09, 2022 at 10:31 AM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -40,9 +40,8 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id`, `nama`, `kategori_id`, `rak_id`, `qty`) VALUES
-(10, 'fujitsubo', 20, 11, 9),
-(11, 'BBS', 22, 11, 7),
-(12, 'asdadsxxxxxxx', 24, 12, 64);
+(14, 'Spion Suzuki All new', 29, 14, 15),
+(15, 'Oli enduro ', 30, 14, 20);
 
 -- --------------------------------------------------------
 
@@ -65,9 +64,7 @@ CREATE TABLE `barang_keluar` (
 --
 
 INSERT INTO `barang_keluar` (`id`, `tanggal`, `montir_id`, `catatan`, `qty`, `users_id`, `barang_id`) VALUES
-(48, '2022-09-25', 4, 'qweqewqe', 10, 7, 12),
-(49, '2022-09-02', 4, 'qweqwe', 3, 7, 11),
-(50, '2022-08-18', 4, 'qweqeqeqe', 12, 7, 12);
+(2, '2022-10-07', 8, 'jjkkj', 5, 9, 14);
 
 -- --------------------------------------------------------
 
@@ -90,8 +87,8 @@ CREATE TABLE `barang_masuk` (
 --
 
 INSERT INTO `barang_masuk` (`id`, `supplier_id`, `tanggal`, `catatan`, `qty`, `users_id`, `barang_id`) VALUES
-(51, 5, '2022-09-25', 'eqwewqeqweqwe', 20, 7, 11),
-(53, 5, '2022-09-26', 'qweqwe', 40, 7, 10);
+(2, 8, '2022-10-09', '1eeqwewq\r\n', 10, 9, 14),
+(3, 8, '2022-10-09', 'sdasd', 20, 9, 15);
 
 -- --------------------------------------------------------
 
@@ -109,11 +106,10 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`id`, `nama`) VALUES
-(20, 'knalpot'),
-(22, 'velg'),
-(23, 'oli'),
-(24, 'Aki'),
-(25, 'spion');
+(27, 'knalpot'),
+(28, 'velg'),
+(29, 'spion'),
+(30, 'oli');
 
 -- --------------------------------------------------------
 
@@ -134,9 +130,7 @@ CREATE TABLE `montir` (
 --
 
 INSERT INTO `montir` (`id`, `nama`, `telp`, `alamat`, `status`) VALUES
-(1, 'angga', '123123', 'godean', 'aktif'),
-(4, 'daffa', '08233213123', 'yogyakarta', 'aktif'),
-(5, 'tes', '0000000000', 'qweqeqew', 'aktif');
+(8, 'brian', '08123123', 'jogja', 'aktif');
 
 -- --------------------------------------------------------
 
@@ -154,8 +148,8 @@ CREATE TABLE `rak` (
 --
 
 INSERT INTO `rak` (`id`, `nama`) VALUES
-(11, 'RAK 001'),
-(12, 'RAK 002');
+(14, 'A001'),
+(15, 'A002');
 
 -- --------------------------------------------------------
 
@@ -175,10 +169,7 @@ CREATE TABLE `supplier` (
 --
 
 INSERT INTO `supplier` (`id`, `nama`, `alamat`, `telp`) VALUES
-(2, 'wijaya', 'qwdkjqdk', '123123'),
-(4, 'anas', 'qweqwe', '123132'),
-(5, 'ridwan', 'godean', '0823232323'),
-(6, 'tes', 'qweqeqwe', '00000');
+(8, 'akmal', 'bandung', '08123123');
 
 -- --------------------------------------------------------
 
@@ -191,7 +182,7 @@ CREATE TABLE `users` (
   `nama` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `hak_akses` enum('admin','operator','super admin') NOT NULL
+  `hak_akses` enum('owner','admin','super admin') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -199,9 +190,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nama`, `username`, `password`, `hak_akses`) VALUES
-(5, 'admin jaya', 'admin', '$2y$10$6AvPabKzN0OCS4WM43rEbeD1BdOdyjVPChFAcPiNIqRR.v.6sm5C2', 'admin'),
-(6, 'operator', 'operator', '$2y$10$.2eg.2qIMAmpudLI1h2aZuDqMjR8ZxwUMne0EDuLwiyqOYHGgttN6', 'operator'),
-(7, 'super admin', 'super admin', '$2y$10$cUDjopKFmkTW2GfwUpSpq.j9Lu0tSXNQLcOaW3xosvXlKRz87Rfw2', 'super admin');
+(8, 'owner', 'owner', '$2y$10$e1LxloOtMmDfUHVlu.foFuTSnaeOGnp6Obc4SKD3KJ7pe.S4DE0Cu', 'owner'),
+(9, 'admin', 'admin', '$2y$10$odb.5927ZQUgPnWbZQFXRuf5BqcGRweEQasp2ZxZKQlSGTBGNM6eq', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -271,49 +261,49 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `barang_keluar`
 --
 ALTER TABLE `barang_keluar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `barang_masuk`
 --
 ALTER TABLE `barang_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `montir`
 --
 ALTER TABLE `montir`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `rak`
 --
 ALTER TABLE `rak`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
