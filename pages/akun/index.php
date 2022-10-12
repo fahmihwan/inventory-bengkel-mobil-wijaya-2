@@ -36,7 +36,7 @@ $query = mysqli_query($conn, "SELECT * FROM users")
                     while ($data = mysqli_fetch_assoc($query)) :
                     ?>
                         <tr>
-                            <td><?= $i ?></td>
+                            <td><?= $i++ ?></td>
                             <td><?= $data['nama']  ?></td>
                             <td><?= $data['username']  ?></td>
                             <td><?= $data['hak_akses']  ?></td>

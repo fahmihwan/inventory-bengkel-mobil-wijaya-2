@@ -13,9 +13,15 @@ if (isset($_POST['submit'])) {
             $_SESSION['hak_akses'] = $fetch['hak_akses'];
             $_SESSION['username'] = $fetch['username'];
             header("Location:./../index.php?menu=dashboard");
+        } else {
+            echo "<script>
+            alert('login gagal')
+            </script>";
         }
     } else {
-        echo "login gagal";
+        echo "<script>
+        alert('login gagal')
+        </script>";
     }
 }
 ?>
@@ -51,11 +57,11 @@ if (isset($_POST['submit'])) {
                                     <div class="card-body">
                                         <form action="" method="post">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="username" id="inputEmail" type="text" placeholder="name@example.com" />
+                                                <input class="form-control" name="username" id="inputEmail" type="text" placeholder="name@example.com" required />
                                                 <label for="inputEmail">Username</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="password" id="inputPassword" type="password" placeholder="Password" />
+                                                <input class="form-control" name="password" id="inputPassword" type="password" placeholder="Password" required />
                                                 <label for="inputPassword">Password</label>
                                             </div>
                                             <div class="form-check mb-3">

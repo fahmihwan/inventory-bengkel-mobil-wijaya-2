@@ -53,7 +53,7 @@ if (isset($_GET['menu'])) {
             }
             break;
         case 'akun':
-            if ($varSession['hak_akses'] != 'admin' && $varSession['hak_akses'] != 'super admin') {
+            if ($varSession['hak_akses'] != 'owner' && $varSession['hak_akses'] != 'super admin') {
                 header('Location:authentication/login.php');
             }
             break;
@@ -222,13 +222,13 @@ if (isset($_GET['menu'])) {
     $barang_masuk = $_GET['akun'];
     switch ($barang_masuk) {
         case 'add':
-            if ($varSession['hak_akses'] != 'admin' && $varSession['hak_akses'] != 'super admin') {
+            if ($varSession['hak_akses'] != 'owner' && $varSession['hak_akses'] != 'super admin') {
                 header('Location:authentication/login.php');
             }
 
             break;
         case 'delete':
-            if ($varSession['hak_akses'] != 'admin' && $varSession['hak_akses'] != 'super admin') {
+            if ($varSession['hak_akses'] != 'owner' && $varSession['hak_akses'] != 'super admin') {
                 header('Location:authentication/login.php');
             }
             break;
