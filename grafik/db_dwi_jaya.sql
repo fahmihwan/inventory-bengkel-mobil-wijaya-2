@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Oct 09, 2022 at 10:31 AM
+-- Generation Time: Oct 22, 2022 at 01:00 PM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_inventory_adi`
+-- Database: `db_dwi_jaya`
 --
 
 -- --------------------------------------------------------
@@ -41,7 +41,8 @@ CREATE TABLE `barang` (
 
 INSERT INTO `barang` (`id`, `nama`, `kategori_id`, `rak_id`, `qty`) VALUES
 (14, 'Spion Suzuki All new', 29, 14, 15),
-(15, 'Oli enduro ', 30, 14, 20);
+(15, 'Oli enduro ', 30, 14, 20),
+(16, 'tes', 28, 14, 5);
 
 -- --------------------------------------------------------
 
@@ -106,7 +107,6 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`id`, `nama`) VALUES
-(27, 'knalpot'),
 (28, 'velg'),
 (29, 'spion'),
 (30, 'oli');
@@ -261,7 +261,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `barang_keluar`
@@ -273,7 +273,7 @@ ALTER TABLE `barang_keluar`
 -- AUTO_INCREMENT for table `barang_masuk`
 --
 ALTER TABLE `barang_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `kategori`
