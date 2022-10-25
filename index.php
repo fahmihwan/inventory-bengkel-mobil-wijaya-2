@@ -203,6 +203,9 @@ include './htacces.php';
                         case 'barang-keluar':
                             include "pages/laporan/laporan_barang_keluar.php";
                             break;
+                        case 'stok':
+                            include "pages/laporan/laporan_stok.php";
+                            break;
                         case 'delete-barang-keluar':
                             include "pages/laporan/delete_barang_keluar.php";
                             break;

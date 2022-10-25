@@ -67,6 +67,12 @@
                     </div>
                     Laporan Barang Keluar
                 </a>
+                <a class="nav-link" href="index.php?laporan=stok">
+                    <div class="sb-nav-link-icon">
+                        <i class="fa-sharp fa-solid fa-bars-progress"></i>
+                    </div>
+                    Laporan Stok
+                </a>
             <?php endif; ?>
 
             <br>
