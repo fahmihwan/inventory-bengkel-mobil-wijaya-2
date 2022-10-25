@@ -7,12 +7,12 @@ $query = mysqli_query($conn, "SELECT * FROM users")
 <div class="container-fluid px-4 ">
     <ol class="breadcrumb pt-2">
         <li class="breadcrumb-item ">Data Barang</li>
-        <li class="breadcrumb-item active">list Barang</li>
+        <li class="breadcrumb-item active">list Akun</li>
     </ol>
     <div class="mb-4">
         <div class="card-header clearfix mb-3" style="border-radius: 20px ;background-color: white; border:0px;">
             <i class="fa-solid fa-boxes-stacked"></i>
-            <span class="ms-2 fw-bolder"> Data Barang</span>
+            <span class="ms-2 fw-bolder"> Data Akun</span>
 
             <!-- Button trigger modal -->
             <a href="index.php?akun=add" class="btn btn-sm btn-primary float-end rounded-pill">

@@ -53,14 +53,13 @@ if (isset($_POST['search'])) {
 ?>
 <div class="container-fluid px-4 ">
     <ol class="breadcrumb pt-2">
-        <li class="breadcrumb-item ">Data Barang Masuk</li>
-        <li class="breadcrumb-item active">list Barang Keluar</li>
+        <li class="breadcrumb-item ">Laporan Barang Masuk</li>
     </ol>
     <div class="mb-4">
         <div class="card-header clearfix mb-3" style="border-radius: 20px ;background-color: white; border:0px;">
             <div class="float-start pt-1">
                 <i class="fa-solid fa-box"></i>
-                <span class="ms-2 fw-bolder"> Data Barang Masuk</span>
+                <span class="ms-2 fw-bolder"> Laporan Barang Masuk</span>
             </div>
         </div>
         <div class="card-header mb-3" style="border-radius: 20px ;background-color: white; border:0px;">
