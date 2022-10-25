@@ -1,24 +1,23 @@
 <?php
 include './koneksi.php';
 
+$id = $_GET['id'];
+
+$query = mysqli_query($conn, "SELECT * FROM users WHERE id='$id'");
+$data = mysqli_fetch_assoc($query);
+
 if (isset($_POST['submit'])) {
     $nama = $_POST['nama'];
     $username = $_POST['username'];
-    // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $password = $_POST['password'];
     $hak_akses = $_POST['hak_akses'];
 
-
-    $cekUsers = mysqli_query($conn, "SELECT * FROM users WHERE username='$username'");
-    if (mysqli_num_rows($cekUsers)) {
-        echo "<script>
-        alert('gagal, username sudah ada');   
-        window.location.href = 'index.php?menu=akun'
-        </script>";
-    } else {
-        $query = mysqli_query($conn, "INSERT INTO users (nama,username,password,hak_akses) VALUE ('$nama','$username','$password','$hak_akses')");
-    }
-
+    $query = mysqli_query($conn, "UPDATE users SET
+        nama='$nama',
+        username='$username',
+        password='$password',
+        hak_akses='$hak_akses'
+        WHERE id='$id'");
 
     if ($query) {
         echo "<script>
@@ -60,35 +59,29 @@ if (isset($_POST['submit'])) {
                     <form action="" method="POST">
                         <div class="mb-3">
                             <label for="nama" class="form-label py-0 m-0">nama</label>
-                            <input type="text" class="form-control rounded-pill border-none" id="nama" name="nama" placeholder="nama" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
+                            <input type="text" value="<?= $data['nama'] ?>" class=" form-control rounded-pill border-none" id="nama" name="nama" placeholder="nama" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                         </div>
                         <div class="mb-3">
                             <label for="nama" class="form-label py-0 m-0">username</label>
-                            <input type="text" class="form-control rounded-pill border-none" id="nama" name="username" placeholder="username" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
+                            <input type="text" value="<?= $data['username'] ?>" class=" form-control rounded-pill border-none" id="nama" name="username" placeholder="username" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                         </div>
                         <div class="mb-3">
                             <label for="alamat" class="form-label py-0 m-0">password</label>
-                            <input type="text" class="form-control rounded-pill border-none" id="alamat" name="password" placeholder="password" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
+                            <input type="text" value="<?= $data['password'] ?>" class=" form-control rounded-pill border-none" id="alamat" name="password" placeholder="password" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                         </div>
                         <div class="mb-3">
                             <label for="telp" class="form-label py-0 m-0">Hak akses</label>
                         </div>
                         <div class="d-flex mb-3">
-                            <!-- <div class="form-check me-3">
-                                <input class="form-check-input" type="radio" name="hak_akses" value="super admin" id="flexRadioDefault3">
-                                <label class="form-check-label" for="flexRadioDefault3">
-                                    Super Admin
-                                </label>
-                            </div> -->
                             <div class="form-check me-3">
-                                <input class="form-check-input" type="radio" name="hak_akses" value="owner" id="flexRadioDefault2">
+                                <input class="form-check-input" type="radio" name="hak_akses" value="owner" <?= ($data['hak_akses'] == 'owner') ?  "checked" : "";  ?> id="flexRadioDefault2">
                                 <label class="form-check-label" for="flexRadioDefault2">
                                     Owner
                                 </label>
                             </div>
 
                             <div class="form-check me-3">
-                                <input class="form-check-input" type="radio" name="hak_akses" value="admin" id="flexRadioDefault1">
+                                <input class="form-check-input" type="radio" name="hak_akses" value="admin" <?= ($data['hak_akses'] == 'admin') ?  "checked" : "";  ?> id="flexRadioDefault1">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Admin
                                 </label>

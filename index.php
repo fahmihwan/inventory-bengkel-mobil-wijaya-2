@@ -187,6 +187,9 @@ include './htacces.php';
                         case 'add':
                             include "pages/akun/add.php";
                             break;
+                        case 'edit':
+                            include "pages/akun/edit.php";
+                            break;
                         case 'delete':
                             include "pages/akun/delete.php";
                             break;

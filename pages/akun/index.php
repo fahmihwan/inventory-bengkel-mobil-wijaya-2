@@ -26,6 +26,7 @@ $query = mysqli_query($conn, "SELECT * FROM users")
                         <th>no</th>
                         <th>Nama</th>
                         <th>Username</th>
+                        <th>Password</th>
                         <th>Hak Akses</th>
                         <th>action</th>
                     </tr>
@@ -39,12 +40,13 @@ $query = mysqli_query($conn, "SELECT * FROM users")
                             <td><?= $i++ ?></td>
                             <td><?= $data['nama']  ?></td>
                             <td><?= $data['username']  ?></td>
+                            <td><?= $data['password']  ?></td>
                             <td><?= $data['hak_akses']  ?></td>
                             <td class="text-center">
-                                <a href="index.php?data-barang=update&id=<?= $data['id']; ?>" class="btn btn-sm btn-warning">
+                                <a href="index.php?akun=edit&id=<?= $data['id']; ?>" class="btn btn-sm btn-warning">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
-                                <a href="index.php?data-barang=delete&id=<?= $data['id']; ?>" onclick="confirmDelete(event)" class="btn btn-sm btn-danger" id="delete-alert">
+                                <a href="index.php?akun=delete&id=<?= $data['id']; ?>" onclick="confirmDelete(event)" class="btn btn-sm btn-danger" id="delete-alert">
                                     <i class="fa-sharp fa-solid fa-trash"></i>
                                 </a>
                             </td>

@@ -10,6 +10,7 @@ tanggal,
 supplier.nama as supplier,
 barang.nama as barang,
 kategori.nama as kategori,
+users.nama as user,
 catatan,
 barang_masuk.qty as qty
 FROM barang_masuk
@@ -19,7 +20,10 @@ INNER JOIN barang
 ON barang.id = barang_masuk.barang_id 
 INNER JOIN kategori
 ON barang.kategori_id = kategori.id
+INNER JOIN users
+ON users.id = barang_masuk.users_id
 ORDER BY tanggal DESC");
+
 
 if (isset($_POST['search'])) {
     $start = $_POST['start'];
@@ -31,6 +35,7 @@ if (isset($_POST['search'])) {
     supplier.nama as supplier,
     barang.nama as barang,
     kategori.nama as kategori,
+    users.nama as user,
     catatan,
     barang_masuk.qty as qty
     FROM barang_masuk
@@ -40,6 +45,8 @@ if (isset($_POST['search'])) {
     ON barang.id = barang_masuk.barang_id 
     INNER JOIN kategori
     ON barang.kategori_id = kategori.id
+    INNER JOIN users
+    ON users.id = barang_masuk.users_id
     WHERE tanggal BETWEEN '$start' AND '$end'");
 }
 
@@ -93,9 +100,7 @@ if (isset($_POST['search'])) {
                         <th>Kategori</th>
                         <th>Supplier</th>
                         <th>Qty</th>
-                        <?php if ($sessionId != 'admin') { ?>
-                            <th>action</th>
-                        <?php } ?>
+                        <th>Petugas</th>
                     </tr>
                 </thead>
 
@@ -112,13 +117,7 @@ if (isset($_POST['search'])) {
                             <td><?= $data['kategori'] ?></td>
                             <td><?= $data['supplier'] ?></td>
                             <td><?= $data['qty'] ?></td>
-                            <?php if ($sessionId != 'admin') { ?>
-                                <td class="text-center">
-                                    <a href="index.php?laporan=delete-barang-keluar&id= <?= $data['id'] ?>" class="btn btn-sm btn-danger text-white">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                </td>
-                            <?php } ?>
+                            <td><?= $data['user'] ?></td>
                         </tr>
                     <?php
                     endwhile;

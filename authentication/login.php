@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
     $query = mysqli_query($conn, "SELECT * FROM users WHERE username='$username'");
     if ($query) {
         $fetch = mysqli_fetch_assoc($query);
-        if (password_verify($password, $fetch['password'])) {
+        if ($fetch['password'] == $password) {
             $_SESSION['id'] = $fetch['id'];
             $_SESSION['hak_akses'] = $fetch['hak_akses'];
             $_SESSION['username'] = $fetch['username'];

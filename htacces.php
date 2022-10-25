@@ -225,7 +225,6 @@ if (isset($_GET['menu'])) {
             if ($varSession['hak_akses'] != 'owner' && $varSession['hak_akses'] != 'super admin') {
                 header('Location:authentication/login.php');
             }
-
             break;
         case 'delete':
             if ($varSession['hak_akses'] != 'owner' && $varSession['hak_akses'] != 'super admin') {
