@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Oct 22, 2022 at 01:00 PM
+-- Generation Time: Oct 26, 2022 at 12:09 PM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -40,9 +40,7 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id`, `nama`, `kategori_id`, `rak_id`, `qty`) VALUES
-(14, 'Spion Suzuki All new', 29, 14, 15),
-(15, 'Oli enduro ', 30, 14, 20),
-(16, 'tes', 28, 14, 5);
+(17, 'oli', 30, 15, 10);
 
 -- --------------------------------------------------------
 
@@ -59,13 +57,6 @@ CREATE TABLE `barang_keluar` (
   `users_id` int(11) NOT NULL,
   `barang_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `barang_keluar`
---
-
-INSERT INTO `barang_keluar` (`id`, `tanggal`, `montir_id`, `catatan`, `qty`, `users_id`, `barang_id`) VALUES
-(2, '2022-10-07', 8, 'jjkkj', 5, 9, 14);
 
 -- --------------------------------------------------------
 
@@ -88,8 +79,7 @@ CREATE TABLE `barang_masuk` (
 --
 
 INSERT INTO `barang_masuk` (`id`, `supplier_id`, `tanggal`, `catatan`, `qty`, `users_id`, `barang_id`) VALUES
-(2, 8, '2022-10-09', '1eeqwewq\r\n', 10, 9, 14),
-(3, 8, '2022-10-09', 'sdasd', 20, 9, 15);
+(4, 8, '2022-10-07', 'jjkkj', 5, 11, 17);
 
 -- --------------------------------------------------------
 
@@ -190,8 +180,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nama`, `username`, `password`, `hak_akses`) VALUES
-(8, 'owner', 'owner', '$2y$10$e1LxloOtMmDfUHVlu.foFuTSnaeOGnp6Obc4SKD3KJ7pe.S4DE0Cu', 'owner'),
-(9, 'admin', 'admin', '$2y$10$odb.5927ZQUgPnWbZQFXRuf5BqcGRweEQasp2ZxZKQlSGTBGNM6eq', 'admin');
+(1, 'jaya', 'owner', '123', 'owner'),
+(11, 'user', 'admin', '123', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -261,7 +251,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `barang_keluar`
@@ -273,7 +263,7 @@ ALTER TABLE `barang_keluar`
 -- AUTO_INCREMENT for table `barang_masuk`
 --
 ALTER TABLE `barang_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -303,7 +293,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
@@ -313,24 +303,24 @@ ALTER TABLE `users`
 -- Constraints for table `barang`
 --
 ALTER TABLE `barang`
-  ADD CONSTRAINT `barang_ibfk_1` FOREIGN KEY (`kategori_id`) REFERENCES `kategori` (`id`),
-  ADD CONSTRAINT `barang_ibfk_2` FOREIGN KEY (`rak_id`) REFERENCES `rak` (`id`);
+  ADD CONSTRAINT `barang_ibfk_3` FOREIGN KEY (`kategori_id`) REFERENCES `kategori` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `barang_ibfk_4` FOREIGN KEY (`rak_id`) REFERENCES `rak` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `barang_keluar`
 --
 ALTER TABLE `barang_keluar`
-  ADD CONSTRAINT `barang_keluar_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `barang_keluar_ibfk_2` FOREIGN KEY (`barang_id`) REFERENCES `barang` (`id`),
-  ADD CONSTRAINT `barang_keluar_ibfk_3` FOREIGN KEY (`montir_id`) REFERENCES `montir` (`id`);
+  ADD CONSTRAINT `barang_keluar_ibfk_4` FOREIGN KEY (`barang_id`) REFERENCES `barang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `barang_keluar_ibfk_5` FOREIGN KEY (`montir_id`) REFERENCES `montir` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `barang_keluar_ibfk_6` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `barang_masuk`
 --
 ALTER TABLE `barang_masuk`
-  ADD CONSTRAINT `barang_masuk_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`id`),
-  ADD CONSTRAINT `barang_masuk_ibfk_3` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `barang_masuk_ibfk_4` FOREIGN KEY (`barang_id`) REFERENCES `barang` (`id`);
+  ADD CONSTRAINT `barang_masuk_ibfk_4` FOREIGN KEY (`barang_id`) REFERENCES `barang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `barang_masuk_ibfk_5` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `barang_masuk_ibfk_6` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
