@@ -37,8 +37,8 @@ $query = mysqli_query($conn, "SELECT * FROM supplier");
                         <tr>
                             <td><?= $i++ ?></td>
                             <td><?= $data['nama'] ?></td>
-                            <td><?= $data['telp'] ?></td>
                             <td><?= $data['alamat'] ?></td>
+                            <td><?= $data['telp'] ?></td>
                             <td class="text-center">
                                 <a href="index.php?supplier=update&id=<?= $data['id']; ?>" class="btn btn-sm btn-warning">
                                     <i class="fa-solid fa-pen-to-square"></i>
