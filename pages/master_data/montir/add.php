@@ -7,7 +7,20 @@ if (isset($_POST['submit'])) {
     $telp = $_POST['telp'];
     $alamat = $_POST['alamat'];
     $status = $_POST['status'];
+
+
+    if (!ctype_digit($telp)) {
+        echo "<script>
+        alert('nomor telp harus angka');   
+        window.location.href = 'index.php?menu=montir'
+        </script>";
+        die;
+    }
+
+
     $query_insert = mysqli_query($conn, "INSERT INTO montir (nama,telp,alamat,status) VALUES ('$nama','$telp','$alamat','$status')");
+
+
 
     if ($query_insert) {
         echo "<script>
@@ -53,7 +66,7 @@ $query = mysqli_query($conn, "SELECT * FROM montir");
                         </div>
                         <div class="mb-3">
                             <label for="telp" class="form-label py-0 m-0">telp</label>
-                            <input type="text" class="form-control rounded-pill border-none" id="telp" name="telp" placeholder="ex: 08xxxxxxxxxx" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
+                            <input type="number" class="form-control rounded-pill border-none" id="telp" name="telp" placeholder="ex: 08xxxxxxxxxx" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                         </div>
                         <div class="mb-3">
                             <label for="alamat" class="form-label py-0 m-0">alamat</label>

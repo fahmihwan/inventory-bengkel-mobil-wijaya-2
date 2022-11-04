@@ -13,6 +13,15 @@ if (isset($_POST['submit'])) {
     $catatan = $_POST['catatan'];
     $session_id = $_SESSION['id'];
 
+
+    if (!ctype_digit($qty)) {
+        echo "<script>
+        alert('qty harus angka');   
+        window.location.href ='index.php?barang-keluar=add  ';
+        </script>";
+        die;
+    }
+
     if ($barang_id == 'default' || $montir_id == 'default') {
         echo "
         <script>
@@ -54,7 +63,6 @@ if (isset($_POST['submit'])) {
         mysqli_commit($conn);
     } catch (\Throwable $e) {
         mysqli_rollback($conn);
-        throw $e;
     }
 }
 
@@ -113,7 +121,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="mb-3">
                             <label for="qty" class="form-label py-0 m-0">qty</label>
-                            <input type="number" class="form-control rounded-pill border-none" id="qty" name="qty" placeholder="qty" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
+                            <input type="number" min="1" class="form-control rounded-pill border-none" id="qty" name="qty" placeholder="qty" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                         </div>
                         <div class="mb-3">
                             <label for="qty" class="form-label py-0 m-0">catatan</label>

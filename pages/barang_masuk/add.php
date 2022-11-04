@@ -10,6 +10,25 @@ if (isset($_POST['submit'])) {
     $barang_id = $_POST['barang_id'];
     $supplier_id = $_POST['supplier_id'];
     $qty = $_POST['qty'];
+
+    if ($qty < 0) {
+        echo "
+        <script>
+        alert('qty tidak boleh kurang dari 0');
+        window.location.href ='index.php?barang-masuk=add  ';
+        </script>
+        ";
+    }
+
+    if (!ctype_digit($qty)) {
+        echo "<script>
+        alert('qty harus angka');   
+        window.location.href ='index.php?barang-masuk=add  ';
+        </script>";
+        die;
+    }
+
+
     $catatan = $_POST['catatan'];
     $session_id = $_SESSION['id'];
 
@@ -105,7 +124,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="mb-3">
                             <label for="qty" class="form-label py-0 m-0">qty</label>
-                            <input type="number" required class="form-control rounded-pill border-none" id="qty" name="qty" placeholder="qty" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
+                            <input type="number" min="1" required class="form-control rounded-pill border-none" id="qty" name="qty" placeholder="qty" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                         </div>
                         <div class="mb-3">
                             <label for="qty" class="form-label py-0 m-0">catatan</label>

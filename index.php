@@ -31,6 +31,18 @@ include './htacces.php';
         .select2-container .select2-selection--single .select2-selection__rendered {
             font-size: 15px;
         }
+
+        .logo {
+            background-color: green;
+            /* width: 100px; */
+            border-radius: 60px;
+            padding: 10px;
+            position: fixed;
+            right: 0;
+            margin-bottom: 20px;
+            margin-right: 20px;
+            bottom: 0;
+        }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
@@ -216,6 +228,9 @@ include './htacces.php';
                 }
                 ?>
             </main>
+            <div class="logo">
+                <img src="./wa-logo.png" style="width: 30px;" alt="">
+            </div>
         </div>
     </div>
 

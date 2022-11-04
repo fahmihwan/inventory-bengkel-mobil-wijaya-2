@@ -11,6 +11,18 @@ if (isset($_POST['submit'])) {
     $nama = $_POST['nama'];
     $alamat = $_POST['alamat'];
     $telp = $_POST['telp'];
+
+
+    if (!ctype_digit($telp)) {
+        echo "<script>
+        alert('nomor telp harus angka');   
+        window.location.href='index.php?menu=supplier';
+        </script>";
+        die;
+    }
+
+
+
     $query = mysqli_query($conn, "UPDATE supplier SET nama='$nama', alamat='$alamat',telp='$telp' WHERE id='$idd'");
 
     if ($query) {
@@ -56,7 +68,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="mb-3">
                             <label for="telp" class="form-label py-0 m-0">telp</label>
-                            <input type="text" value="<?= $data['telp'] ?>" class="form-control rounded-pill border-none" id="telp" name="telp" placeholder="ex: 08xxxxxxxxxx" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
+                            <input type="number" value="<?= $data['telp'] ?>" class="form-control rounded-pill border-none" id="telp" name="telp" placeholder="ex: 08xxxxxxxxxx" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                         </div>
                         <div class="mb-3">
                             <label for="alamat" class="form-label py-0 m-0">alamat</label>
