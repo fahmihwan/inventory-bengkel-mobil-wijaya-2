@@ -31,7 +31,7 @@ GROUP BY nama ORDER BY qty DESC");
 
 
     <div class="row">
-        <div class="col-6 col-xl-3 col-md-3">
+        <div class="mb-3 col-6 col-xl-3 col-md-3 ">
             <div class="bg-white rounded p-3 " style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
                 <div class="d-flex">
                     <div class=" ">

@@ -18,6 +18,15 @@ if (isset($_POST['submit'])) {
         ";
     }
 
+
+    if (!ctype_digit($qty)) {
+        echo "<script>
+        alert('qty harus angka');   
+        window.location.href ='index.php?menu=data-barang';
+        </script>";
+        die;
+    }
+
     $query_insert = mysqli_query($conn, "INSERT INTO barang (nama,kategori_id,rak_id,qty) VALUES ('$nama','$kategori_id','$rak_id','$qty')");
 
 
@@ -52,7 +61,7 @@ $kategori = mysqli_query($conn, "SELECT * FROM kategori");
         <div class="card-header clearfix mb-3" style="border-radius: 20px ;background-color: white; border:0px;">
             <i class="fa-solid fa-users"></i>
             <span class="ms-2 fw-bolder"> Form Input Barang</span>
-            <a href="menu=data-barang" class="btn btn-sm btn-primary float-end rounded-pill ">
+            <a href="index.php?menu=data-barang" class="btn btn-sm btn-primary float-end rounded-pill ">
                 <i class="fa-solid fa-arrow-left"></i> kembali
             </a>
         </div>
@@ -94,7 +103,7 @@ $kategori = mysqli_query($conn, "SELECT * FROM kategori");
                         </div>
                         <div class="mb-3">
                             <label for="qty" class="form-label py-0 m-0">qty</label>
-                            <input type="text" class="form-control rounded-pill border-none" id="qty" name="qty" placeholder="qty" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
+                            <input type="number" min="0" class="form-control rounded-pill border-none" id="qty" name="qty" placeholder="qty" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                         </div>
                         <button name="submit" class="btn btn-primary rounded-pill">submit</button>
                         <button class="btn btn-secondary rounded-pill">clear</button>

@@ -27,6 +27,15 @@ if (isset($_POST['submit'])) {
     $rak_id = $_POST['rak_id'];
     $qty = $_POST['qty'];
 
+
+    if (!ctype_digit($qty)) {
+        echo "<script>
+        alert('qty harus angka');   
+        window.location.href ='index.php?menu=data-barang';
+        </script>";
+        die;
+    }
+
     $queryUpdate = mysqli_query($conn, "UPDATE barang
     SET nama='$nama',
     kategori_id='$kategori_id',
@@ -109,7 +118,7 @@ $kategori = mysqli_query($conn, "SELECT * FROM kategori");
                         </div>
                         <div class="mb-3">
                             <label for="qty" class="form-label py-0 m-0">qty</label>
-                            <input type="number" value="<?= $fetchBarang['qty'] ?>" class="form-control rounded-pill border-none" id="qty" name="qty" placeholder="qty" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
+                            <input type="number" min="0" value="<?= $fetchBarang['qty'] ?>" class="form-control rounded-pill border-none" id="qty" name="qty" placeholder="qty" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                         </div>
                         <button name="submit" class="btn btn-primary rounded-pill">submit</button>
                         <button class="btn btn-secondary rounded-pill">clear</button>
