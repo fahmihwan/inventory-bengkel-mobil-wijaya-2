@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Oct 26, 2022 at 12:09 PM
+-- Generation Time: Nov 12, 2022 at 03:50 PM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -40,7 +40,9 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id`, `nama`, `kategori_id`, `rak_id`, `qty`) VALUES
-(17, 'oli', 30, 15, 10);
+(19, 'dsds', 28, 14, 115),
+(21, 'dewa', 28, 15, 20),
+(24, 'dewa122', 28, 17, 0);
 
 -- --------------------------------------------------------
 
@@ -57,6 +59,13 @@ CREATE TABLE `barang_keluar` (
   `users_id` int(11) NOT NULL,
   `barang_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `barang_keluar`
+--
+
+INSERT INTO `barang_keluar` (`id`, `tanggal`, `montir_id`, `catatan`, `qty`, `users_id`, `barang_id`) VALUES
+(3, '2022-10-26', 8, 'jjkkj', 10, 11, 19);
 
 -- --------------------------------------------------------
 
@@ -79,7 +88,7 @@ CREATE TABLE `barang_masuk` (
 --
 
 INSERT INTO `barang_masuk` (`id`, `supplier_id`, `tanggal`, `catatan`, `qty`, `users_id`, `barang_id`) VALUES
-(4, 8, '2022-10-07', 'jjkkj', 5, 11, 17);
+(1, 8, '2022-11-06', 'qwewe', 2, 11, 19);
 
 -- --------------------------------------------------------
 
@@ -99,7 +108,7 @@ CREATE TABLE `kategori` (
 INSERT INTO `kategori` (`id`, `nama`) VALUES
 (28, 'velg'),
 (29, 'spion'),
-(30, 'oli');
+(34, 'tes');
 
 -- --------------------------------------------------------
 
@@ -120,7 +129,8 @@ CREATE TABLE `montir` (
 --
 
 INSERT INTO `montir` (`id`, `nama`, `telp`, `alamat`, `status`) VALUES
-(8, 'brian', '08123123', 'jogja', 'aktif');
+(8, 'brian', '08123123', 'jogja', 'aktif'),
+(9, 'dewa', '08123123', 'jogja', 'aktif');
 
 -- --------------------------------------------------------
 
@@ -138,8 +148,28 @@ CREATE TABLE `rak` (
 --
 
 INSERT INTO `rak` (`id`, `nama`) VALUES
-(14, 'A001'),
-(15, 'A002');
+(14, 'A003'),
+(15, 'A002'),
+(16, 'dewa'),
+(17, 'dewa'),
+(18, 'dewa12'),
+(19, 'dewa122'),
+(20, 'qwe'),
+(21, '123'),
+(22, 'eqw'),
+(23, 'ewq'),
+(24, '123'),
+(25, 'qwe'),
+(26, 'dfg'),
+(27, 'dfg'),
+(28, 'ewr'),
+(29, 'rty'),
+(30, 'as'),
+(31, 'df'),
+(32, 'es'),
+(33, 'kp'),
+(34, 'kp'),
+(35, 'kp');
 
 -- --------------------------------------------------------
 
@@ -151,15 +181,18 @@ CREATE TABLE `supplier` (
   `id` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `alamat` varchar(255) NOT NULL,
-  `telp` char(20) NOT NULL
+  `telp` char(20) NOT NULL,
+  `kategori_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `supplier`
 --
 
-INSERT INTO `supplier` (`id`, `nama`, `alamat`, `telp`) VALUES
-(8, 'akmal', 'bandung', '08123123');
+INSERT INTO `supplier` (`id`, `nama`, `alamat`, `telp`, `kategori_id`) VALUES
+(8, 'akmal', 'bandung', '08123123', 28),
+(9, 'dewa', 'jogja', '08123123', 28),
+(10, 'dewa', 'jogja', '0812334331', 34);
 
 -- --------------------------------------------------------
 
@@ -235,7 +268,8 @@ ALTER TABLE `rak`
 -- Indexes for table `supplier`
 --
 ALTER TABLE `supplier`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `kategori_id` (`kategori_id`);
 
 --
 -- Indexes for table `users`
@@ -251,43 +285,43 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `barang_keluar`
 --
 ALTER TABLE `barang_keluar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `barang_masuk`
 --
 ALTER TABLE `barang_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `montir`
 --
 ALTER TABLE `montir`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `rak`
 --
 ALTER TABLE `rak`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -303,8 +337,8 @@ ALTER TABLE `users`
 -- Constraints for table `barang`
 --
 ALTER TABLE `barang`
-  ADD CONSTRAINT `barang_ibfk_3` FOREIGN KEY (`kategori_id`) REFERENCES `kategori` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `barang_ibfk_4` FOREIGN KEY (`rak_id`) REFERENCES `rak` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `barang_ibfk_5` FOREIGN KEY (`kategori_id`) REFERENCES `kategori` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `barang_ibfk_6` FOREIGN KEY (`rak_id`) REFERENCES `rak` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `barang_keluar`
@@ -318,9 +352,9 @@ ALTER TABLE `barang_keluar`
 -- Constraints for table `barang_masuk`
 --
 ALTER TABLE `barang_masuk`
-  ADD CONSTRAINT `barang_masuk_ibfk_4` FOREIGN KEY (`barang_id`) REFERENCES `barang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `barang_masuk_ibfk_5` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `barang_masuk_ibfk_6` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `barang_masuk_ibfk_6` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `barang_masuk_ibfk_7` FOREIGN KEY (`barang_id`) REFERENCES `barang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

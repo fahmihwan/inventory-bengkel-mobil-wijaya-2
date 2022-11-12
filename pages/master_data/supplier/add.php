@@ -5,7 +5,7 @@ if (isset($_POST['submit'])) {
     $nama = $_POST['nama'];
     $telp = $_POST['telp'];
     $alamat = $_POST['alamat'];
-
+    $kategori_id = $_POST['kategori_id'];
 
     if (!ctype_digit($telp)) {
         echo "<script>
@@ -14,10 +14,9 @@ if (isset($_POST['submit'])) {
         </script>";
         die;
     }
+    
 
-    $query_insert = mysqli_query($conn, "INSERT INTO supplier (nama,alamat,telp) VALUES ('$nama','$alamat','$telp')");
-
-
+    $query_insert = mysqli_query($conn, "INSERT INTO supplier (nama,alamat,telp,kategori_id) VALUES ('$nama','$alamat','$telp','$kategori_id')");
 
     if ($query_insert) {
         echo "<script>
@@ -32,6 +31,7 @@ if (isset($_POST['submit'])) {
     }
 }
 
+$kategori = mysqli_query($conn,"SELECT * FROM kategori");
 
 
 ?>
@@ -70,6 +70,16 @@ if (isset($_POST['submit'])) {
                             <label for="telp" class="form-label py-0 m-0">telp</label>
                             <input type="number" class="form-control rounded-pill border-none" id="telp" name="telp" placeholder="ex: 08xxxxxxxxxx" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                         </div>
+                        <div class="mb-3">
+                            <label for="telp" class="form-label py-0 m-0">kategori</label>
+                            <select name="kategori_id" id="" class="form-control rounded-pill border-none" >
+                                <option disabled selected> pilih kategori </option>
+                            <?php foreach ($kategori as $ktgr) : ?>
+                                <option value="<?= $ktgr['id'] ?>"><?= $ktgr['nama'] ?></option>
+                            <?php endforeach; ?>
+                            </select>
+                        </div>
+
 
                         <button name="submit" class="btn btn-primary rounded-pill">submit</button>
                         <button class="btn btn-secondary rounded-pill">clear</button>

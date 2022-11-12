@@ -1,8 +1,17 @@
 <?php
+
+use JetBrains\PhpStorm\Internal\ReturnTypeContract;
+
 include './koneksi.php';
 
-$query = mysqli_query($conn, "SELECT * FROM supplier");
+
+$query = mysqli_query($conn, "SELECT  supplier.id as id, supplier.nama as nama, alamat, telp, kategori.nama as kategori
+FROM supplier
+INNER JOIN kategori
+ON supplier.kategori_id = kategori.id");
 ?>
+
+
 <div class="container-fluid px-4 ">
     <ol class="breadcrumb pt-2">
         <li class="breadcrumb-item ">supplier</li>
@@ -12,9 +21,11 @@ $query = mysqli_query($conn, "SELECT * FROM supplier");
         <div class="card-header clearfix mb-3" style="border-radius: 20px ;background-color: white; border:0px;">
             <i class="fa-solid fa-users"></i>
             <span class="ms-2 fw-bolder"> Data Supplier</span>
+            <?php if($varSession['hak_akses'] =='admin'): ?>
             <a href="index.php?supplier=add" class="btn btn-sm btn-primary float-end rounded-pill ">
                 tambah data <i class="fa-solid fa-user-plus"></i>
             </a>
+            <?php endif; ?>
         </div>
 
         <div class="p-3  bg-white " style="border-radius: 20px; ">
@@ -25,7 +36,10 @@ $query = mysqli_query($conn, "SELECT * FROM supplier");
                         <th>nama</th>
                         <th>alamat</th>
                         <th>telp</th>
+                        <th>kategori</th>
+                        <?php if($varSession['hak_akses'] =='admin'): ?>
                         <th>action</th>
+                        <?php endif; ?>
                     </tr>
                 </thead>
 
@@ -39,6 +53,8 @@ $query = mysqli_query($conn, "SELECT * FROM supplier");
                             <td><?= $data['nama'] ?></td>
                             <td><?= $data['alamat'] ?></td>
                             <td><?= $data['telp'] ?></td>
+                            <td><?= $data['kategori'] ?></td>
+                            <?php if($varSession['hak_akses'] =='admin'): ?>
                             <td class="text-center">
                                 <a href="index.php?supplier=update&id=<?= $data['id']; ?>" class="btn btn-sm btn-warning">
                                     <i class="fa-solid fa-pen-to-square"></i>
@@ -47,6 +63,7 @@ $query = mysqli_query($conn, "SELECT * FROM supplier");
                                     <i class="fa-sharp fa-solid fa-trash"></i>
                                 </a>
                             </td>
+                            <?php endif; ?>
                         </tr>
                     <?php
                     endwhile;

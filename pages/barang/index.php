@@ -25,9 +25,11 @@ ON barang.kategori_id = kategori.id");
             <span class="ms-2 fw-bolder"> Data Barang</span>
 
             <!-- Button trigger modal -->
+            <?php if($varSession =='admin'): ?>
             <a href="index.php?data-barang=add" class="btn btn-sm btn-primary float-end rounded-pill">
                 tambah data <i class="fa-solid fa-boxes-stacked"></i>
             </a>
+            <?php endif; ?>
         </div>
         <div class="p-3  bg-white " style="border-radius: 20px; ">
             <table id="datatablesSimple" style="border-color: white;">
@@ -38,7 +40,9 @@ ON barang.kategori_id = kategori.id");
                         <th>Kategori</th>
                         <th>Rak</th>
                         <th>Qty</th>
+                        <?php if($varSession =='admin'): ?>
                         <th>action</th>
+                        <?php endif; ?>
                     </tr>
                 </thead>
 
@@ -53,6 +57,7 @@ ON barang.kategori_id = kategori.id");
                             <td><?= $data['kategori'] ?></td>
                             <td><?= $data['rak'] ?></td>
                             <td><?= $data['qty'] ?></td>
+                            <?php if($varSession ==' admin'): ?>
                             <td class="text-center">
                                 <a href="index.php?data-barang=update&id=<?= $data['id']; ?>" class="btn btn-sm btn-warning">
                                     <i class="fa-solid fa-pen-to-square"></i>
@@ -61,6 +66,7 @@ ON barang.kategori_id = kategori.id");
                                     <i class="fa-sharp fa-solid fa-trash"></i>
                                 </a>
                             </td>
+                            <?php endif; ?>
                         </tr>
                     <?php
                     endwhile;

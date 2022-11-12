@@ -20,10 +20,11 @@ $query = mysqli_query($conn, "SELECT * FROM kategori");
             <span class="ms-2 fw-bolder"> Data Kategori</span>
 
             <!-- Button trigger modal -->
+            <?php if($varSession['hak_akses'] =='admin'): ?>
             <button type="button" class="btn btn-sm btn-primary float-end rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 tambah data <i class="fa-solid fa-boxes-stacked"></i>
             </button>
-
+            <?php endif; ?>
         </div>
         <div class="p-3  bg-white " style="border-radius: 20px; ">
             <table id="datatablesSimple" style="border-color: white;">
@@ -31,7 +32,9 @@ $query = mysqli_query($conn, "SELECT * FROM kategori");
                     <tr>
                         <th>no</th>
                         <th>Nama Kategori</th>
+                        <?php if($varSession['hak_akses']=='admin'): ?>
                         <th>action</th>
+                        <?php endif; ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,6 +45,7 @@ $query = mysqli_query($conn, "SELECT * FROM kategori");
                         <tr>
                             <td><?= $i++ ?></td>
                             <td><?= $data['nama'] ?></td>
+                            <?php if($varSession['hak_akses']=='admin'): ?>
                             <td class="text-center">
                                 <a href="index.php?kategori=update&id=<?= $data['id']; ?>" class="btn btn-sm btn-warning">
                                     <i class="fa-solid fa-pen-to-square"></i>
@@ -50,6 +54,7 @@ $query = mysqli_query($conn, "SELECT * FROM kategori");
                                     <i class="fa-sharp fa-solid fa-trash"></i>
                                 </a>
                             </td>
+                            <?php endif; ?>
                         </tr>
                     <?php
                     endwhile;

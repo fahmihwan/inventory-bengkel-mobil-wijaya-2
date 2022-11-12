@@ -7,7 +7,6 @@ if (!$varSession) {
     header('Location:authentication/login.php');
 }
 
-include './htacces.php';
 
 ?>
 <!DOCTYPE html>
