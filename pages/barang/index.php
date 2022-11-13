@@ -57,7 +57,7 @@ ON barang.kategori_id = kategori.id");
                             <td><?= $data['kategori'] ?></td>
                             <td><?= $data['rak'] ?></td>
                             <td><?= $data['qty'] ?></td>
-                            <?php if ($varSession['hak_akses'] == ' admin') : ?>
+                            <?php if ($varSession['hak_akses'] == 'admin') : ?>
                                 <td class="text-center">
                                     <a href="index.php?data-barang=update&id=<?= $data['id']; ?>" class="btn btn-sm btn-warning">
                                         <i class="fa-solid fa-pen-to-square"></i>
