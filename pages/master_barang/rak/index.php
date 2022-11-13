@@ -20,11 +20,11 @@ $query = mysqli_query($conn, "SELECT * FROM rak");
             <i class="fa-solid fa-boxes-stacked"></i>
             <span class="ms-2 fw-bolder"> Data Rak</span>
 
-            <?php if($varSession['hak_akses'] =='admin'): ?>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-sm btn-primary float-end rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                tambah data <i class="fa-solid fa-boxes-stacked"></i>
-            </button>
+            <?php if ($varSession['hak_akses'] == 'admin') : ?>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-sm btn-primary float-end rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    tambah data <i class="fa-solid fa-boxes-stacked"></i>
+                </button>
             <?php endif; ?>
         </div>
 
@@ -34,8 +34,8 @@ $query = mysqli_query($conn, "SELECT * FROM rak");
                     <tr>
                         <th>no</th>
                         <th>Nama Rak</th>
-                        <?php if($varSession['hak_akses'] =='admin'): ?>
-                        <th>action</th>
+                        <?php if ($varSession['hak_akses'] == 'admin') : ?>
+                            <th>action</th>
                         <?php endif; ?>
                     </tr>
                 </thead>
@@ -48,15 +48,15 @@ $query = mysqli_query($conn, "SELECT * FROM rak");
                         <tr>
                             <td><?= $i++ ?></td>
                             <td><?= $data['nama'] ?></td>
-                            <?php if($varSession['hak_akses'] =='admin'): ?>
-                            <td class="text-center">
-                                <a href="index.php?rak=update&id=<?= $data['id']; ?>" class="btn btn-sm btn-warning">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </a>
-                                <a href="index.php?rak=delete&id=<?= $data['id']; ?>" onclick="confirmDelete(event)" class="btn btn-sm btn-danger" id="delete-alert">
-                                    <i class="fa-sharp fa-solid fa-trash"></i>
-                                </a>
-                            </td>
+                            <?php if ($varSession['hak_akses'] == 'admin') : ?>
+                                <td class="text-center">
+                                    <a href="index.php?rak=update&id=<?= $data['id']; ?>" class="btn btn-sm btn-warning">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <a href="index.php?rak=delete&id=<?= $data['id']; ?>" onclick="confirmDelete(event)" class="btn btn-sm btn-danger" id="delete-alert">
+                                        <i class="fa-sharp fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
                             <?php endif; ?>
                         </tr>
                     <?php
