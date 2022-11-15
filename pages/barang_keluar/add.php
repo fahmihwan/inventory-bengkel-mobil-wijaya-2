@@ -3,7 +3,7 @@ include './koneksi.php';
 
 
 $queryAllBarang = mysqli_query($conn, "SELECT * FROM barang");
-$queryAllMontir = mysqli_query($conn, "SELECT * FROM montir");
+$queryAllMontir = mysqli_query($conn, "SELECT * FROM montir WHERE status='aktif'");
 
 if (isset($_POST['submit'])) {
     $tanggal = $_POST['tanggal'];
