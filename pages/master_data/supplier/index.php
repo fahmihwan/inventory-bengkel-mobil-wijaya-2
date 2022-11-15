@@ -5,10 +5,7 @@ use JetBrains\PhpStorm\Internal\ReturnTypeContract;
 include './koneksi.php';
 
 
-$query = mysqli_query($conn, "SELECT  supplier.id as id, supplier.nama as nama, alamat, telp, kategori.nama as kategori
-FROM supplier
-INNER JOIN kategori
-ON supplier.kategori_id = kategori.id");
+$query = mysqli_query($conn, "SELECT  * FROM supplier");
 ?>
 
 
@@ -21,10 +18,10 @@ ON supplier.kategori_id = kategori.id");
         <div class="card-header clearfix mb-3" style="border-radius: 20px ;background-color: white; border:0px;">
             <i class="fa-solid fa-users"></i>
             <span class="ms-2 fw-bolder"> Data Supplier</span>
-            <?php if($varSession['hak_akses'] =='admin'): ?>
-            <a href="index.php?supplier=add" class="btn btn-sm btn-primary float-end rounded-pill ">
-                tambah data <i class="fa-solid fa-user-plus"></i>
-            </a>
+            <?php if ($varSession['hak_akses'] == 'admin') : ?>
+                <a href="index.php?supplier=add" class="btn btn-sm btn-primary float-end rounded-pill ">
+                    tambah data <i class="fa-solid fa-user-plus"></i>
+                </a>
             <?php endif; ?>
         </div>
 
@@ -36,9 +33,9 @@ ON supplier.kategori_id = kategori.id");
                         <th>nama</th>
                         <th>alamat</th>
                         <th>telp</th>
-                        <th>kategori</th>
-                        <?php if($varSession['hak_akses'] =='admin'): ?>
-                        <th>action</th>
+                        <th>catatan</th>
+                        <?php if ($varSession['hak_akses'] == 'admin') : ?>
+                            <th>action</th>
                         <?php endif; ?>
                     </tr>
                 </thead>
@@ -53,16 +50,16 @@ ON supplier.kategori_id = kategori.id");
                             <td><?= $data['nama'] ?></td>
                             <td><?= $data['alamat'] ?></td>
                             <td><?= $data['telp'] ?></td>
-                            <td><?= $data['kategori'] ?></td>
-                            <?php if($varSession['hak_akses'] =='admin'): ?>
-                            <td class="text-center">
-                                <a href="index.php?supplier=update&id=<?= $data['id']; ?>" class="btn btn-sm btn-warning">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </a>
-                                <a href="index.php?supplier=delete&id=<?= $data['id']; ?>" onclick="confirmDelete(event)" class="btn btn-sm btn-danger" id="delete-alert">
-                                    <i class="fa-sharp fa-solid fa-trash"></i>
-                                </a>
-                            </td>
+                            <td><?= $data['catatan'] ?></td>
+                            <?php if ($varSession['hak_akses'] == 'admin') : ?>
+                                <td class="text-center">
+                                    <a href="index.php?supplier=update&id=<?= $data['id']; ?>" class="btn btn-sm btn-warning">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <a href="index.php?supplier=delete&id=<?= $data['id']; ?>" onclick="confirmDelete(event)" class="btn btn-sm btn-danger" id="delete-alert">
+                                        <i class="fa-sharp fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
                             <?php endif; ?>
                         </tr>
                     <?php
