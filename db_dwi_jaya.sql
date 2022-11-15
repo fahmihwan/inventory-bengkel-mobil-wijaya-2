@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 15, 2022 at 04:19 PM
+-- Generation Time: Nov 15, 2022 at 04:43 PM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -159,17 +159,18 @@ CREATE TABLE `supplier` (
   `nama` varchar(50) NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `telp` char(20) NOT NULL,
-  `catatan` varchar(255) NOT NULL
+  `catatan_supplier` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `supplier`
 --
 
-INSERT INTO `supplier` (`id`, `nama`, `alamat`, `telp`, `catatan`) VALUES
+INSERT INTO `supplier` (`id`, `nama`, `alamat`, `telp`, `catatan_supplier`) VALUES
 (8, 'akmal', 'bandung', '08123123', 'asda'),
 (11, 'dewa', 'jogja', '0812334331', '3NSHzKWzAQ'),
-(12, 'dewa', 'jogja', '0812334331', '65cqwoWTut');
+(12, 'dewa', 'jogja', '0812334331', 'TfdPdIMxGedsds'),
+(13, 'dewa', 'jogja', '0812334331', 'ABTNX0BTg5');
 
 -- --------------------------------------------------------
 
@@ -297,7 +298,7 @@ ALTER TABLE `rak`
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`
