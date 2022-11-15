@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 12, 2022 at 03:50 PM
+-- Generation Time: Nov 15, 2022 at 04:19 PM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -35,15 +35,6 @@ CREATE TABLE `barang` (
   `qty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `barang`
---
-
-INSERT INTO `barang` (`id`, `nama`, `kategori_id`, `rak_id`, `qty`) VALUES
-(19, 'dsds', 28, 14, 115),
-(21, 'dewa', 28, 15, 20),
-(24, 'dewa122', 28, 17, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -60,13 +51,6 @@ CREATE TABLE `barang_keluar` (
   `barang_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `barang_keluar`
---
-
-INSERT INTO `barang_keluar` (`id`, `tanggal`, `montir_id`, `catatan`, `qty`, `users_id`, `barang_id`) VALUES
-(3, '2022-10-26', 8, 'jjkkj', 10, 11, 19);
-
 -- --------------------------------------------------------
 
 --
@@ -82,13 +66,6 @@ CREATE TABLE `barang_masuk` (
   `users_id` int(11) NOT NULL,
   `barang_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `barang_masuk`
---
-
-INSERT INTO `barang_masuk` (`id`, `supplier_id`, `tanggal`, `catatan`, `qty`, `users_id`, `barang_id`) VALUES
-(1, 8, '2022-11-06', 'qwewe', 2, 11, 19);
 
 -- --------------------------------------------------------
 
@@ -129,7 +106,7 @@ CREATE TABLE `montir` (
 --
 
 INSERT INTO `montir` (`id`, `nama`, `telp`, `alamat`, `status`) VALUES
-(8, 'brian', '08123123', 'jogja', 'aktif'),
+(8, 'brian', '08123123', 'jogja', 'non-aktif'),
 (9, 'dewa', '08123123', 'jogja', 'aktif');
 
 -- --------------------------------------------------------
@@ -182,17 +159,17 @@ CREATE TABLE `supplier` (
   `nama` varchar(50) NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `telp` char(20) NOT NULL,
-  `kategori_id` int(11) NOT NULL
+  `catatan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `supplier`
 --
 
-INSERT INTO `supplier` (`id`, `nama`, `alamat`, `telp`, `kategori_id`) VALUES
-(8, 'akmal', 'bandung', '08123123', 28),
-(9, 'dewa', 'jogja', '08123123', 28),
-(10, 'dewa', 'jogja', '0812334331', 34);
+INSERT INTO `supplier` (`id`, `nama`, `alamat`, `telp`, `catatan`) VALUES
+(8, 'akmal', 'bandung', '08123123', 'asda'),
+(11, 'dewa', 'jogja', '0812334331', '3NSHzKWzAQ'),
+(12, 'dewa', 'jogja', '0812334331', '65cqwoWTut');
 
 -- --------------------------------------------------------
 
@@ -268,8 +245,7 @@ ALTER TABLE `rak`
 -- Indexes for table `supplier`
 --
 ALTER TABLE `supplier`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `kategori_id` (`kategori_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -297,7 +273,7 @@ ALTER TABLE `barang_keluar`
 -- AUTO_INCREMENT for table `barang_masuk`
 --
 ALTER TABLE `barang_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -321,7 +297,7 @@ ALTER TABLE `rak`
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`
