@@ -20,6 +20,8 @@ INNER JOIN kategori
 ON barang.kategori_id = kategori.id
 ORDER BY tanggal DESC");
 
+
+
 ?>
 
 <div class="container-fluid px-4 ">

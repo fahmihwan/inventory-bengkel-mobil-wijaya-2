@@ -50,7 +50,7 @@ $query = mysqli_query($conn, "SELECT  * FROM supplier");
                             <td><?= $data['nama'] ?></td>
                             <td><?= $data['alamat'] ?></td>
                             <td><?= $data['telp'] ?></td>
-                            <td><?= $data['catatan'] ?></td>
+                            <td><?= $data['catatan_supplier'] ?></td>
                             <?php if ($varSession['hak_akses'] == 'admin') : ?>
                                 <td class="text-center">
                                     <a href="index.php?supplier=update&id=<?= $data['id']; ?>" class="btn btn-sm btn-warning">

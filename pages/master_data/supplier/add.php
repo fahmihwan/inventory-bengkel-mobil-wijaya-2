@@ -5,7 +5,7 @@ if (isset($_POST['submit'])) {
     $nama = $_POST['nama'];
     $telp = $_POST['telp'];
     $alamat = $_POST['alamat'];
-    $catatan = $_POST['catatan'];
+    $catatan_supplier = $_POST['catatan_supplier'];
 
     if (!ctype_digit($telp)) {
         echo "<script>
@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
     }
 
 
-    $query_insert = mysqli_query($conn, "INSERT INTO supplier (nama,alamat,telp,catatan) VALUES ('$nama','$alamat','$telp','$catatan')");
+    $query_insert = mysqli_query($conn, "INSERT INTO supplier (nama,alamat,telp,catatan_supplier) VALUES ('$nama','$alamat','$telp','$catatan_supplier')");
 
     if ($query_insert) {
         echo "<script>
@@ -71,8 +71,8 @@ $kategori = mysqli_query($conn, "SELECT * FROM kategori");
                             <input type="number" class="form-control rounded-pill border-none" id="telp" name="telp" placeholder="ex: 08xxxxxxxxxx" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                         </div>
                         <div class="mb-3">
-                            <label for="catatan" class="form-label py-0 m-0">catatan</label>
-                            <input type="text" class="form-control rounded-pill border-none" id="catatan" name="catatan" placeholder="catatan" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
+                            <label for="catatan_supplier" class="form-label py-0 m-0">catatan</label>
+                            <input type="text" class="form-control rounded-pill border-none" id="catatan_supplier" name="catatan_supplier" placeholder="catatan" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                         </div>
 
 

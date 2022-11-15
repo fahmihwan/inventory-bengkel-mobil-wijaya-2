@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
     $nama = $_POST['nama'];
     $alamat = $_POST['alamat'];
     $telp = $_POST['telp'];
-    $catatan = $_POST['catatan'];
+    $catatan_supplier = $_POST['catatan_supplier'];
 
 
     if (!ctype_digit($telp)) {
@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
 
 
 
-    $query = mysqli_query($conn, "UPDATE supplier SET nama='$nama', alamat='$alamat',telp='$telp', catatan='$catatan' WHERE id='$idd'");
+    $query = mysqli_query($conn, "UPDATE supplier SET nama='$nama', alamat='$alamat',telp='$telp', catatan_supplier='$catatan_supplier' WHERE id='$idd'");
 
     if ($query) {
         echo "<script>
@@ -76,8 +76,8 @@ if (isset($_POST['submit'])) {
                             <input type="text" value="<?= $data['alamat'] ?>" class="form-control rounded-pill border-none" id="alamat" name="alamat" placeholder="alamat" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                         </div>
                         <div class="mb-3">
-                            <label for="catatan" class="form-label py-0 m-0">catatan</label>
-                            <input type="text" value="<?= $data['catatan'] ?>" class="form-control rounded-pill border-none" id="catatan" name="catatan" placeholder="catatan" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
+                            <label for="catatan_supplier" class="form-label py-0 m-0">catatan</label>
+                            <input type="text" value="<?= $data['catatan_supplier'] ?>" class="form-control rounded-pill border-none" id="catatan_supplier" name="catatan_supplier" placeholder="catatan" required style="box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;">
                         </div>
 
 
