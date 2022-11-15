@@ -18,9 +18,16 @@ if (isset($_POST['submit'])) {
     }
 
 
-    $query_insert = mysqli_query($conn, "INSERT INTO montir (nama,telp,alamat,status) VALUES ('$nama','$telp','$alamat','$status')");
-
-
+    $cekTelp = mysqli_query($conn, "SELECT * FROM montir WHERE telp='$telp'");
+    if (mysqli_num_rows($cekTelp)) {
+        echo "<script>
+        alert('gagal, nomor telp sudah ada');   
+        window.location.href = 'index.php?menu=montir'
+        </script>";
+        return false;
+    } else {
+        $query_insert = mysqli_query($conn, "INSERT INTO montir (nama,telp,alamat,status) VALUES ('$nama','$telp','$alamat','$status')");
+    }
 
     if ($query_insert) {
         echo "<script>
@@ -29,7 +36,7 @@ if (isset($_POST['submit'])) {
         </script>";
     } else {
         echo "<script>
-        alert('success');   
+        alert('fail');   
         window.location.href = 'index.php?menu=montir'       
         </script>";
     }

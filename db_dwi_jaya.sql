@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 15, 2022 at 04:43 PM
+-- Generation Time: Nov 15, 2022 at 05:11 PM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -107,7 +107,7 @@ CREATE TABLE `montir` (
 
 INSERT INTO `montir` (`id`, `nama`, `telp`, `alamat`, `status`) VALUES
 (8, 'brian', '08123123', 'jogja', 'non-aktif'),
-(9, 'dewa', '08123123', 'jogja', 'aktif');
+(10, 'dewa', '08123343312', 'jogja', 'aktif');
 
 -- --------------------------------------------------------
 
@@ -168,9 +168,8 @@ CREATE TABLE `supplier` (
 
 INSERT INTO `supplier` (`id`, `nama`, `alamat`, `telp`, `catatan_supplier`) VALUES
 (8, 'akmal', 'bandung', '08123123', 'asda'),
-(11, 'dewa', 'jogja', '0812334331', '3NSHzKWzAQ'),
-(12, 'dewa', 'jogja', '0812334331', 'TfdPdIMxGedsds'),
-(13, 'dewa', 'jogja', '0812334331', 'ABTNX0BTg5');
+(13, 'dewa', 'jogja', '0812334331', 'ABTNX0BTg5'),
+(18, 'dewa', 'jogja', '08123343312', 'p28njQrh4L');
 
 -- --------------------------------------------------------
 
@@ -234,7 +233,8 @@ ALTER TABLE `kategori`
 -- Indexes for table `montir`
 --
 ALTER TABLE `montir`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `telp` (`telp`);
 
 --
 -- Indexes for table `rak`
@@ -246,13 +246,16 @@ ALTER TABLE `rak`
 -- Indexes for table `supplier`
 --
 ALTER TABLE `supplier`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `telp_2` (`telp`),
+  ADD KEY `telp` (`telp`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -286,7 +289,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `montir`
 --
 ALTER TABLE `montir`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `rak`
@@ -298,7 +301,7 @@ ALTER TABLE `rak`
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `users`

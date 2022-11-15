@@ -16,7 +16,16 @@ if (isset($_POST['submit'])) {
     }
 
 
-    $query_insert = mysqli_query($conn, "INSERT INTO supplier (nama,alamat,telp,catatan_supplier) VALUES ('$nama','$alamat','$telp','$catatan_supplier')");
+    $cekTelp = mysqli_query($conn, "SELECT * FROM supplier WHERE telp='$telp'");
+    if (mysqli_num_rows($cekTelp)) {
+        echo "<script>
+        alert('gagal, nomor telp sudah ada');   
+        window.location.href = 'index.php?menu=supplier';
+        </script>";
+        return false;
+    } else {
+        $query_insert = mysqli_query($conn, "INSERT INTO supplier (nama,alamat,telp,catatan_supplier) VALUES ('$nama','$alamat','$telp','$catatan_supplier')");
+    }
 
     if ($query_insert) {
         echo "<script>
@@ -25,7 +34,7 @@ if (isset($_POST['submit'])) {
         </script>";
     } else {
         echo "<script>
-        alert('success');   
+        alert('fail');   
         window.location.href = 'index.php?menu=supplier'       
         </script>";
     }
